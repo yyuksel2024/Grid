@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="SampleNamespace" constructor="FluentUIDataGrid" version="1.0.0" display-name-key="FluentUIDataGrid" description-key="FluentUIDataGrid description" control-type="virtual">
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <property name="height" display-name-key="Height" description-key="Height of the entire component" of-type="Whole.None" usage="input" required="false" />
+    <property name="headerWidth" display-name-key="Header Width" description-key="Width of the header" of-type="Whole.None" usage="input" required="false" />
+    <property name="headerHeight" display-name-key="Header Height" description-key="Height of the header" of-type="Whole.None" usage="input" required="false" />
+    <property name="dataInput" display-name-key="Data Input" description-key="JSON data input for the grid" of-type="SingleLine.Text" usage="input" required="true" />
+   
+
+    <!--
+      Property node's of-type attribute can be of-type-group attribute.
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1" />
+      <platform-library name="React" version="16.8.6" />
+      <platform-library name="Fluent" version="8.29.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/FluentUI_DataGrid.css" order="1" />
+      <resx path="strings/FluentUI_DataGrid.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!--
+      UNCOMMENT TO ENABLE THE SPECIFIED API
+      <feature-usage>
+        <uses-feature name="Device.captureAudio" required="true" />
+        <uses-feature name="Device.captureImage" required="true" />
+        <uses-feature name="Device.captureVideo" required="true" />
+        <uses-feature name="Device.getBarcodeValue" required="true" />
+        <uses-feature name="Device.getCurrentPosition" required="true" />
+        <uses-feature name="Device.pickFile" required="true" />
+        <uses-feature name="Utility" required="true" />
+        <uses-feature name="WebAPI" required="true" />
+      </feature-usage>
+    -->
+  </control>
+</manifest>
