@@ -2,7 +2,6 @@
 <manifest>
   <control namespace="SampleNamespace" constructor="FluentUIDataGrid" version="1.0.0" display-name-key="FluentUIDataGrid" description-key="FluentUIDataGrid description" control-type="virtual">
     <data-set name="sampleDataSet" display-name-key="Sample DataSet">
-      <property-set name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
     </data-set>
     <property name="name" display-name-key="Name" description-key="Name of the control" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="headerWidth" display-name-key="Header Width" description-key="Width of the header" of-type="Whole.None" usage="input" required="false" />

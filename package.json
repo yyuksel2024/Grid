@@ -11,7 +11,7 @@
     "start": "pcf-scripts start",
     "start:watch": "pcf-scripts start watch",
     "refreshTypes": "pcf-scripts refreshTypes",
-    "package": "pcf-scripts package"
+    "pack": "pcf-scripts package"
   },
   "dependencies": {
     "@fluentui/react": "^8.119.3",
