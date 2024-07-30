@@ -1,8 +1,7 @@
-// components/DetailView.tsx
-
 import * as React from 'react';
 import { IconButton } from '@fluentui/react';
 import { getClassNames } from '../FluentUI-DataGrid.styles';
+import { IDataGridProps } from '../FluentUI-DataGrid';
 
 const DEFAULT_PROFILE_IMAGE = 'https://via.placeholder.com/300x300?text=No+Image';
 
@@ -14,10 +13,10 @@ interface DetailViewProps {
     handleNextImage: () => void;
     handleCloseDetails: () => void;
     width: number;
-    height: number; // Yeni eklenen height prop'u
-  }
+    height: number;
+}
 
-  const DetailView: React.FC<DetailViewProps> = ({
+const DetailView: React.FC<DetailViewProps> = ({
     width,
     height,
     selectedItem,
@@ -27,7 +26,8 @@ interface DetailViewProps {
     handleNextImage,
     handleCloseDetails
 }) => {
-    const classNames = getClassNames({ detailViewWidth: width,height });
+    const classNames = getClassNames({ detailViewWidth: width, height } as Partial<IDataGridProps>);
+
     const capitalizeFirstLetter = (string: string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
@@ -45,8 +45,8 @@ interface DetailViewProps {
             <div className={classNames.content}>
                 <div className={classNames.imageContainer}>
                     <img
-                        src={selectedItem.images && selectedItem.images.length > 0 
-                            ? selectedItem.images[currentImageIndex] 
+                        src={selectedItem.images && selectedItem.images.length > 0
+                            ? selectedItem.images[currentImageIndex]
                             : DEFAULT_PROFILE_IMAGE}
                         alt={`${selectedItem.name}'s profile`}
                         className={classNames.detailImage}

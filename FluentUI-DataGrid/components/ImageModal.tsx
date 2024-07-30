@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Modal, IconButton, FocusTrapZone, IIconProps } from '@fluentui/react';
 import { getClassNames } from '../FluentUI-DataGrid.styles';
+import { IDataGridProps } from '../FluentUI-DataGrid';
 
 interface ImageModalProps {
     isOpen: boolean;
@@ -17,7 +18,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
     currentImageIndex,
     navigateImages
 }) => {
-    const classNames = getClassNames();
+    const classNames = getClassNames({} as Partial<IDataGridProps>);
     const modalContentRef = React.useRef<HTMLDivElement>(null);
 
     const handleKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {

@@ -1,7 +1,7 @@
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { IDataGridProps } from './FluentUI-DataGrid';
 
-export const getClassNames = (props?: Partial<IDataGridProps>) => {
+export const getClassNames = (props: Partial<IDataGridProps>) => {
     return mergeStyleSets({
         container: {
             display: 'flex',

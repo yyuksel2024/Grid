@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ComboBox, IComboBoxOption, PrimaryButton, DefaultButton, IColumn } from '@fluentui/react';
 import { getClassNames } from '../FluentUI-DataGrid.styles';
+import { IDataGridProps } from '../FluentUI-DataGrid';
 
 interface FilterPanelProps {
     columns: IColumn[];
@@ -12,9 +13,17 @@ interface FilterPanelProps {
     height: number;
 }
 
-const FilterPanel: React.FC<FilterPanelProps> = ({ columns, filters, setFilters, data, applyFilters, width, height }) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({
+    columns,
+    filters,
+    setFilters,
+    data,
+    applyFilters,
+    width,
+    height
+}) => {
     const [tempFilters, setTempFilters] = React.useState(filters);
-    const classNames = getClassNames({ filterPanelWidth: width, height });
+    const classNames = getClassNames({ filterPanelWidth: width, height } as Partial<IDataGridProps>);
 
     const handleFilterChange = (key: string, value: any) => {
         setTempFilters(prev => ({ ...prev, [key]: value }));
@@ -101,7 +110,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ columns, filters, setFilters,
                 return null;
             })}
             <div className={classNames.filterActions}>
-                <PrimaryButton 
+                <PrimaryButton
                     onClick={handleApplyFilters}
                     styles={{
                         root: {

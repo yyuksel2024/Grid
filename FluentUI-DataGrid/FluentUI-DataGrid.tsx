@@ -11,13 +11,14 @@ import DataList from './components/DataList';
 export interface IDataGridProps {
     name: string;
     data: any[];
-    filterPanelWidth: number;
-    dataListWidth: number;
-    detailViewWidth: number;
+    columns: IColumn[]; // Eklendi
+    headerWidth: number;
     height: number;
     headerHeight: number;
     contentHeight: number;
-    headerWidth?: number;
+    filterPanelWidth: number;
+    dataListWidth: number;
+    detailViewWidth: number;
 }
 
 export const DataGrid: React.FC<IDataGridProps> = (props) => {
@@ -213,9 +214,9 @@ export const DataGrid: React.FC<IDataGridProps> = (props) => {
     const classNames = getClassNames(props);
 
     return (
-        <div className={classNames.container} style={{ width: `${headerWidth}px`, height: `${props.height}px` }}>
+        <div className={classNames.container} style={{ width: `${props.headerWidth}px`, height: `${props.height}px` }}>
             <div className={classNames.header} style={{ width: '100%', height: `${props.headerHeight}px` }}>
-                <h2>DataGrid Example {props.name}</h2>
+                <h2>{props.name}</h2>
             </div>
             <div className={classNames.contentContainer} style={{ height: `${props.contentHeight}px` }}>
                 <FilterPanel
@@ -240,16 +241,16 @@ export const DataGrid: React.FC<IDataGridProps> = (props) => {
                 />
                 {selectedItem && (
                     <DetailView
-                    selectedItem={selectedItem}
-                    currentImageIndex={currentImageIndex}
-                    handleImageClick={handleImageClick}
-                    handlePrevImage={() => navigateImages('prev')}
-                    handleNextImage={() => navigateImages('next')}
-                    handleCloseDetails={handleCloseDetails}
-                    width={actualDetailViewWidth}
-                    height={props.contentHeight}
-                />
-            )}
+                        selectedItem={selectedItem}
+                        currentImageIndex={currentImageIndex}
+                        handleImageClick={handleImageClick}
+                        handlePrevImage={() => navigateImages('prev')}
+                        handleNextImage={() => navigateImages('next')}
+                        handleCloseDetails={handleCloseDetails}
+                        width={actualDetailViewWidth}
+                        height={props.contentHeight}
+                    />
+                )}
                 <ImageModal
                     isOpen={isModalOpen}
                     hideModal={hideModal}

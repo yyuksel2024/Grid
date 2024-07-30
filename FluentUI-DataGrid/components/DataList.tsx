@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, SelectionMode, IColumn, IDragDropEvents, SearchBox } from '@fluentui/react';
+import { useState } from 'react';
+import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode, PrimaryButton, SearchBox } from '@fluentui/react';
 import { getClassNames } from '../FluentUI-DataGrid.styles';
+import { IDataGridProps } from '../FluentUI-DataGrid';
 
 interface DataListProps {
     width: number;
@@ -9,7 +11,7 @@ interface DataListProps {
     columns: IColumn[];
     onActiveItemChanged: (item: any) => void;
     onColumnClick: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
-    dragDropEvents: IDragDropEvents;
+    dragDropEvents: any;
     searchTerm: string;
     setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -25,7 +27,7 @@ const DataList: React.FC<DataListProps> = ({
     searchTerm,
     setSearchTerm
 }) => {
-    const classNames = getClassNames({ dataListWidth: width, height: height });
+    const classNames = getClassNames({ dataListWidth: width, height } as Partial<IDataGridProps>);
 
     const handleSearch = (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => {
         setSearchTerm(newValue || '');
@@ -55,8 +57,8 @@ const DataList: React.FC<DataListProps> = ({
                             onColumnHeaderClick={onColumnClick}
                             dragDropEvents={dragDropEvents}
                             styles={{
-                                root: { 
-                                    minWidth: '100%', 
+                                root: {
+                                    minWidth: '100%',
                                     minHeight: '100%',
                                     overflow: 'visible'
                                 }
